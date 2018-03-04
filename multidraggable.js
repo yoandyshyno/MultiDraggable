@@ -28,6 +28,9 @@
 						drag: function(event,ui) {
 							var pos = $(this).offset();
 							$.each(opts.group || {}, function(key,value) {
+								if($(value).hasClass("ui-draggable-disabled")) {
+									return;
+								}
 								$(value).offset({left: pos.left + initLeftOffset[key], 
 								top: pos.top + initTopOffset[key]});				
 							});
@@ -36,6 +39,9 @@
 						stop: function(event,ui) {
 							var pos = $(this).offset();
 							$.each(opts.group || {}, function(key,value) {
+								if($(value).hasClass("ui-draggable-disabled")) {
+									return;
+								}
 								$(value).offset({left: pos.left + initLeftOffset[key], 
 								top: pos.top + initTopOffset[key]});								
 							});
